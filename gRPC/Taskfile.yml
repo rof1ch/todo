@@ -1,0 +1,17 @@
+version: '3'
+
+tasks:
+  run:
+    desc: 'Запуск проекта'
+    cmds:
+      - 'go run cmd/sso/main.go'
+
+  migration:
+    desc: 'Запуск миграции'
+    cmds:
+      - 'go run cmd/migrator/main.go --storage-path=./storage/sso.db --migrations-path=./migrations'
+
+  migration-test:
+    desc: 'Запуск миграции для тестов'
+    cmds:
+      - 'go run cmd/migrator/main.go --storage-path=./storage/sso.db --migrations-path=./tests/migrations --migrations-table=migrations_test'
